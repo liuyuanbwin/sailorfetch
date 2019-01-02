@@ -97,9 +97,6 @@ Page({
           } else {
             // 回到原来的地方放
              wx.navigateBack();
-            wx.navigateTo({
-              url: "/pages/index/index"
-            })
           }
         }
       })
@@ -133,16 +130,8 @@ Page({
             wx.setStorageSync('uid', res.data.data.uid)
             that.bindGetUserInfo
             // 回到原来的地方放
-            wx.navigateTo({
-              url: "/pages/index/index"
-            })
             wx.navigateBack();
-            // wx.navigateTo({
-            //   url: '../index/index'
-            // })
-            // wx.redirectTo({
-            //   url: '../index/index',
-            // })
+
           }
         })
       }

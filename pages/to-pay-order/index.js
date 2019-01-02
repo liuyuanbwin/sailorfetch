@@ -2,6 +2,25 @@
 //获取应用实例
 var app = getApp()
 
+const date = new Date()
+const years = []
+const months = []
+const days = []
+const hours = []
+const minutes = []
+
+for(let i = 2019; i<=date.getFullYear() + 1;i++){
+  years.push(i)
+}
+
+for(let i = i; i <= 12; i ++){
+  months.push(i)
+}
+
+for(let i = 1; i <= 31; i++){
+  days.push(i)
+}
+
 Page({
   data: {
     totalScoreToPay: 0,
@@ -17,7 +36,20 @@ Page({
     hasNoCoupons: true,
     coupons: [],
     youhuijine:0, //优惠券金额
-    curCoupon:null // 当前选择使用的优惠券
+    curCoupon:null, // 当前选择使用的优惠券
+
+    isDateDelivery:false,//是否预约送水
+    appointDate:"", //预约送水时间
+
+    years,
+    dateYear:date.getFullYear(),
+    months,
+    dateMonth:date.getMonth,
+    days,
+    dateDay:date.getDay(),
+    value:[2019,1,1],
+    dateHour:date.getHours(),
+    dateMinute:date.getMinutes()
   },
   onShow : function () {
     var that = this;
@@ -277,5 +309,14 @@ Page({
       youhuijine: this.data.coupons[selIndex].money,
       curCoupon: this.data.coupons[selIndex]
     });
+  },
+  dateDelivery:function(e){
+    console.log('是否是预约送水' + e.detail.value)
+    this.setData({
+      isDateDelivery:e.detail.value
+    })
+  },
+  modifyAppointDate:function(e){
+    
   }
 })
