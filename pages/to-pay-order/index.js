@@ -49,7 +49,10 @@ Page({
     dateDay:date.getDay(),
     value:[2019,1,1],
     dateHour:date.getHours(),
-    dateMinute:date.getMinutes()
+    dateMinute:date.getMinutes(),
+    dateDate:'2019-01-01',
+    dateTime:'09:00',
+    
   },
   onShow : function () {
     var that = this;
@@ -115,6 +118,13 @@ Page({
     }
     if (that.data.pingtuanOpenId) {
       postData.pingtuanOpenId = that.data.pingtuanOpenId
+    }
+    if(that.data.isDateDelivery){
+      postData.remark = "预约送水 " + that.data.dateDate + " " + that.data.dateTime
+      postData.extJson = JSON.stringify({
+        date:that.data.dateDate,
+        time:that.data.dateTime
+      })
     }
     if (that.data.isNeedLogistics > 0) {
       if (!that.data.curAddressData) {
@@ -318,5 +328,17 @@ Page({
   },
   modifyAppointDate:function(e){
     
+  },
+  bindAppointDateChange:function(e){
+    console.log('预约日期为 ' + e.detail.value)
+    this.setData({
+      dateDate:e.detail.value
+    })
+  },
+  bindAppointTimeChange:function(e){
+    console.log('预约时间为 ' + e.detail.value)
+    this.setData({
+      dateTime:e.detail.value
+    })
   }
 })

@@ -160,12 +160,17 @@ Page({
       url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/list',
       data: postData,
       success: (res) => {
+
+        console.log('****** ' + JSON.stringify(res))
+
+
         wx.hideLoading();
         if (res.data.code == 0) {
+          console.log(' S订单列表 === > ' + JSON.stringify(res.data.data.orderList))
           that.setData({
             orderList: res.data.data.orderList,
             logisticsMap : res.data.data.logisticsMap,
-            goodsMap : res.data.data.goodsMap
+            goodsMap : res.data.data.goodsMapsS
           });
         } else {
           this.setData({

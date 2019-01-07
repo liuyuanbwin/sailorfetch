@@ -175,6 +175,17 @@ form{
     border-radius: 0;
 }
 
+.modify-date-btn{
+    width: 150rpx;
+    text-align: center;
+    line-height: 120%;
+    background-color: darkgreen;
+    font-size: 32rpx;
+    color: #ffffff;
+    border-radius: 0;
+    display: inline-block;
+}
+
 .jiesuan-box  .left-price{
     display: flex;
     width: 500rpx;

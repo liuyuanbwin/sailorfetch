@@ -22,6 +22,7 @@ Page({
           id: that.data.orderId
         },
         success: (res) => {
+          console.log('###### ' + JSON.stringify(res))
           wx.hideLoading();
           if (res.data.code != 0) {
             wx.showModal({
